@@ -56,13 +56,14 @@ function resetAll() {
 }
 
 inputBtns.forEach((button) => {
-  if (button.classList.length === 0) {
+  const buttonType = button.dataset.type;
+  if (buttonType === "number") {
     button.addEventListener("click", () => sendNumberValue(button.value));
-  } else if (button.classList.contains("operator")) {
+  } else if (buttonType === "operator") {
     button.addEventListener("click", () => useOperator(button.value));
-  } else if (button.classList.contains("decimal")) {
+  } else if (buttonType === "decimal") {
     button.addEventListener("click", addDecimal);
-  } else if (button.classList.contains("clear")) {
+  } else if (buttonType === "clear") {
     button.addEventListener("click", resetAll);
   }
 });
